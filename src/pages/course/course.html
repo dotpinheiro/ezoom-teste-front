@@ -1,0 +1,31 @@
+<ion-header no-border transparent [ngStyle]="{'background-image': 'url(' + (course | async).course_img + ')'}">
+  <div class="buttons-container">
+    <button>
+      <ion-icon name="settings"></ion-icon>
+    </button>
+    <button>
+      <ion-icon name="list"></ion-icon>
+    </button>
+  </div>
+  <div class="nav-info">
+    <button (click)="goBack()">
+      <ion-icon name="ios-arrow-dropleft"></ion-icon>
+    </button>
+    <h1>{{ (course | async).title }}</h1>
+  </div>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+
+    <ion-card-header>
+      {{ (course | async).title }}
+    </ion-card-header>
+
+    <ion-card-content>
+      {{ (course | async).course_desc }}
+    </ion-card-content>
+
+  </ion-card>
+
+</ion-content>

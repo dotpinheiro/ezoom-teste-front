@@ -1,14 +1,29 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+<ion-header no-border transparent>
+  <div class="buttons-container">
+    <button>
+      <ion-icon name="settings"></ion-icon>
+    </button>
+    <button>
+      <ion-icon name="list"></ion-icon>
+    </button>
+  </div>
+  <div class="nav-info">
+    <h1>Cursos e Treinamentos</h1>
+    <h3>Selecione o curso ou treinamento desejado.</h3>
+  </div>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v3">docs</a> will be your guide.
-  </p>
+
+  <div class="list-container">
+    <div class="list">
+      <div class="list-item" *ngFor="let course of courses | async" (click)="viewCourse(course)">
+        <p>{{ course.title }}</p>
+        <img [src]="course.course_img"/>
+      </div>
+      <h3 *ngIf="(courses | async).length == 0 && !loading"> Ainda não há cursos disponíveis. </h3>
+    </div>
+  </div>
+
+
 </ion-content>
